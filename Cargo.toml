@@ -1,5 +1,5 @@
 [package]
-name = "rust-practice"
+name = "rust-playbook"
 version = "0.1.0"
 edition = "2018"
 

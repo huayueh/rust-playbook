@@ -39,6 +39,6 @@ INSERT INTO users(name, created_at, updated_at) VALUES('harvey1234567', '2021-08
 ```cargo build```
 ## Run
 - Have your `.env file` reference `.env.mysql` for example.
-```./target/debug/rust-practice```
+- start application ```./target/debug/rust-playbook```
 ## Run test script
 ```bash test-post.sh```.

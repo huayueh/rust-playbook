@@ -6,7 +6,7 @@ appenders:
       pattern: "{d} {T:>18.20} {l:5} {M}:{L}- {m}{n}"
   file:
     kind: rolling_file
-    path: "log/rust-practice.log"
+    path: "log/rust-playbook.log"
     encoder:
       pattern: "{d} {T:>18} {l:5} {M}:{L}- {m}{n}"
     policy:
