@@ -1,8 +1,9 @@
 use crate::models::errors::ApiError;
-use actix_web::{get, post, delete, put, web};
-use actix_web::web::{Json, Path, Data, Query, block};
 use crate::models::post::{Post, NewPost, UpdatePost, ListPostRequest, PostList};
 use crate::repositories::post_repository::PostRepository;
+use actix_web::{get, post, delete, put, web};
+use actix_web::web::{Json, Path, Data, block};
+use actix_web_validator::Query;
 
 pub fn post_routes(cfg: &mut web::ServiceConfig) {
     cfg

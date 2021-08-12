@@ -264,6 +264,27 @@ dependencies = [
 ]
 
 [[package]]
+name = "actix-web-validator"
+version = "2.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ccc12baceaa6262daa4f00ce1cb60ddb0cab262474595af1993900f1c0fc53eb"
+dependencies = [
+ "actix-router",
+ "actix-web",
+ "bytes 0.5.6",
+ "derive_more",
+ "futures",
+ "futures-util",
+ "log",
+ "mime",
+ "serde",
+ "serde_json",
+ "serde_qs",
+ "serde_urlencoded",
+ "validator",
+]
+
+[[package]]
 name = "adler"
 version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -654,6 +675,7 @@ checksum = "1adc00f486adfc9ce99f77d717836f0c5aa84965eb0b4f051f4e83f7cab53f8b"
 dependencies = [
  "futures-channel",
  "futures-core",
+ "futures-executor",
  "futures-io",
  "futures-sink",
  "futures-task",
@@ -675,6 +697,17 @@ name = "futures-core"
 version = "0.3.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "af51b1b4a7fdff033703db39de8802c673eb91855f2e0d47dcf3bf2c0ef01f99"
+
+[[package]]
+name = "futures-executor"
+version = "0.3.16"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4d0d535a57b87e1ae31437b892713aee90cd2d7b0ee48727cd11fc72ef54761c"
+dependencies = [
+ "futures-core",
+ "futures-task",
+ "futures-util",
+]
 
 [[package]]
 name = "futures-io"
@@ -857,6 +890,12 @@ dependencies = [
  "unicode-bidi",
  "unicode-normalization",
 ]
+
+[[package]]
+name = "if_chain"
+version = "1.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1f7280c75fb2e2fc47080ec80ccc481376923acb04501957fc38f935c3de5088"
 
 [[package]]
 name = "indexmap"
@@ -1257,6 +1296,30 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ac74c624d6b2d21f425f752262f42188365d7b8ff1aff74c82e45136510a4857"
 
 [[package]]
+name = "proc-macro-error"
+version = "1.0.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "da25490ff9892aab3fcf7c36f08cfb902dd3e71ca0f9f9517bea02a73a5ce38c"
+dependencies = [
+ "proc-macro-error-attr",
+ "proc-macro2",
+ "quote",
+ "syn",
+ "version_check",
+]
+
+[[package]]
+name = "proc-macro-error-attr"
+version = "1.0.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a1be40180e52ecc98ad80b184934baf3d0d29f979574e439af5a55274b35f869"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "version_check",
+]
+
+[[package]]
 name = "proc-macro-hack"
 version = "0.5.19"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1401,6 +1464,7 @@ name = "rust-practice"
 version = "0.1.0"
 dependencies = [
  "actix-web",
+ "actix-web-validator",
  "chrono",
  "derive_more",
  "diesel",
@@ -1412,6 +1476,7 @@ dependencies = [
  "r2d2",
  "r2d2-diesel",
  "serde",
+ "validator",
 ]
 
 [[package]]
@@ -1525,6 +1590,19 @@ dependencies = [
  "itoa",
  "ryu",
  "serde",
+]
+
+[[package]]
+name = "serde_qs"
+version = "0.8.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d8a72808528a89fa9eca23bbb6a1eb92cb639b881357269b6510f11e50c0f8a9"
+dependencies = [
+ "actix-web",
+ "futures",
+ "percent-encoding 2.1.0",
+ "serde",
+ "thiserror",
 ]
 
 [[package]]
@@ -1967,6 +2045,45 @@ dependencies = [
  "matches",
  "percent-encoding 2.1.0",
 ]
+
+[[package]]
+name = "validator"
+version = "0.12.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "841d6937c33ec6039d8071bcf72933146b5bbe378d645d8fa59bdadabfc2a249"
+dependencies = [
+ "idna 0.2.3",
+ "lazy_static",
+ "regex",
+ "serde",
+ "serde_derive",
+ "serde_json",
+ "url 2.2.2",
+ "validator_derive",
+ "validator_types",
+]
+
+[[package]]
+name = "validator_derive"
+version = "0.12.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4286b4497f270f59276a89ae0ad109d5f8f18c69b613e3fb22b61201aadb0c4d"
+dependencies = [
+ "if_chain",
+ "lazy_static",
+ "proc-macro-error",
+ "proc-macro2",
+ "quote",
+ "regex",
+ "syn",
+ "validator_types",
+]
+
+[[package]]
+name = "validator_types"
+version = "0.12.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ad9680608df133af2c1ddd5eaf1ddce91d60d61b6bc51494ef326458365a470a"
 
 [[package]]
 name = "vcpkg"

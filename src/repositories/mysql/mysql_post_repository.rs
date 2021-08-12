@@ -86,6 +86,8 @@ impl PostRepository for MysqlPostRepository {
             .offset((req.page-1) * req.page_size)
             .load::<Post>(&conn)?;
 
+        //TODO: ideally use window function to include count in one SQL request.
+        // Haven't make custom struct work with diesel. Workaround by provide is_end flag.
         // let list = sql_query(include_str!("summary.sql"))
         //     // .bind::<Integer, _>(req.id_start)
         //     .load::<PostWithRow>(&conn)?;
@@ -100,11 +102,13 @@ impl PostRepository for MysqlPostRepository {
         //         updated_at: p.updated_at
         //     }
         // }).collect();
+
         info!("id_start {} id_end {}", &req.id_start, &req.id_end);
         Ok(PostList {
-            // count: 0, //TODO: make custom struct work with diesel
+            // count: 0,
             page: req.page,
             page_size: req.page_size,
+            is_end: list.len() < req.page_size as usize,
             posts: list
         })
     }

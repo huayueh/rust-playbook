@@ -18,6 +18,8 @@ pub enum ApiError {
     InternalServerError(String),
     NotFound(String),
     PoolError(String),
+    #[display(fmt = "")]
+    ValidationError(Vec<String>),
 }
 
 /// User-friendly error messages
@@ -35,6 +37,9 @@ impl ResponseError for ApiError {
             }
             ApiError::NotFound(message) => {
                 HttpResponse::NotFound().json::<ErrorResponse>(message.into())
+            }
+            ApiError::ValidationError(errors) => {
+                HttpResponse::UnprocessableEntity().json::<ErrorResponse>(errors.to_vec().into())
             }
             _ => HttpResponse::new(StatusCode::INTERNAL_SERVER_ERROR)
         }

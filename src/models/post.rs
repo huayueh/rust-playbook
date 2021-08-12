@@ -1,6 +1,7 @@
 use crate::models::schema::posts;
 use chrono::{NaiveDateTime, Utc};
 use serde::{Deserialize, Serialize};
+use validator::Validate;
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Queryable, QueryableByName, Identifiable, Insertable)]
 #[table_name = "posts"]
@@ -51,11 +52,12 @@ pub struct UpdatePost {
     pub content: String,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, Validate)]
 pub struct ListPostRequest {
     pub id_start: i64,
     pub id_end: i64,
     pub page: i64,
+    #[validate(range(min = 10, max = 100))]
     pub page_size: i64,
 }
 
@@ -64,6 +66,7 @@ pub struct PostList {
     // pub count: i64,
     pub page: i64,
     pub page_size: i64,
+    pub is_end: bool,
     pub posts: Vec<Post>,
 }
 
